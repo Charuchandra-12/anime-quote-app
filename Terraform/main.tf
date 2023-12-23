@@ -94,3 +94,13 @@ resource "aws_instance" "webserver" {
 output "public_ip" {
   value = aws_instance.webserver.public_ip
 }
+
+# aws acc.setup
+# statefile management
+# script for all installation is pending
+# github pipeline code pending
+# setup for custom domain
+
+
+
+# maybe prometheus setup 
