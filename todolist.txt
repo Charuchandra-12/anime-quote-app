@@ -6,4 +6,4 @@
 
 
 
-# maybe prometheus setup if added then add helm chart, peomethoud, gragana and alert setup in the project descriptino.
+# maybe prometheus setup if added then add helm chart, prometheus, grafana and alert setup in the project description.
