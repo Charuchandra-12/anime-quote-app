@@ -1,0 +1,9 @@
+# aws acc.setup
+# statefile management
+# script for all installation is pending
+# github pipeline code pending
+# setup for custom domain
+
+
+
+# maybe prometheus setup if added then add helm chart, peomethoud, gragana and alert setup in the project descriptino.
