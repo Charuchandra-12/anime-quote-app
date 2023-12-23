@@ -1,7 +1,7 @@
 # aws acc.setup
 # statefile management
 # manull setup for Route53 and nameservers of Hostinger
-# script for all installation and setup for custom domain like changing the cofig file for ngixn is pending
+# script for all installation and setup for custom domain like changing the cofig file for ngixn is pending and run the app in minkkube cluster 2 replicas
 # github pipeline code pending (make new docker image and upload to dockerhub) and then pull the the above script part
 
 
