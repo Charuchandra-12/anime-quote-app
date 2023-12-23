@@ -1,9 +1,13 @@
 # aws acc.setup
 # statefile management
 # script for all installation is pending
-# github pipeline code pending
-# setup for custom domain
+# github pipeline code pending (make new docker image and upload to dockerhub) and then pull the the above script part
+# setup for custom domain maybe only nginx revers proxi will do no need to implement that jenkins.conf part over here
 
 
+
+# I guess when I bulild the new dockerimage from the piepline I will need to change the connections in the prometheus helm chart's value and this will be more headache so better leave it for now for this project.  
 
 # maybe prometheus setup if added then add helm chart, prometheus, grafana and alert setup in the project description.
+
+# after doing all the above just check like add some console.log and then check the pipline and other than app rest of the installations should be as it is.
