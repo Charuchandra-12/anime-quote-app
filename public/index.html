@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anime Quotes</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url('https://source.unsplash.com/1600x900/?anime,landscape');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .blur-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(3px); /* Reduced blur */
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centering the container */
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            max-width: 500px; /* Ensuring max-width for responsiveness */
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        blockquote {
+            border-left: 5px solid #26a69a;
+            margin: 20px 0;
+            padding-left: 15px;
+        }
+
+        footer {
+            text-align: right;
+            color: #999;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 15px;
+                margin-top: 20px;
+                top: auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="blur-background"></div>
+
+<div class="container">
+    <h2>Anime Quotes</h2>
+    <div id="quote"></div>
+    <button class="btn waves-effect waves-light" onclick="fetchQuote()">Get New Quote</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    async function fetchQuote() {
+        try {
+            const response = await fetch('/quote');
+            const data = await response.json();
+            document.getElementById('quote').innerHTML = `
+                <blockquote>
+                    <p>"${data.quote}"</p>
+                    <footer>- ${data.character} (${data.anime})</footer>
+                </blockquote>
+            `;
+        } catch (error) {
+            console.error('Error fetching new quote');
+        }
+    }
+
+    fetchQuote();
+</script>
+</body>
+</html>

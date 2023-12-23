@@ -1,0 +1,17 @@
+{
+  "name": "anime-quote-app",
+  "version": "1.0.0",
+  "description": "A simple yet comprehensive DevOps project that incorporates AWS services, Docker, Kubernetes, Terraform, shell scripting, Git, and GitHub Actions for the development and deployment of a basic web application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "keywords": [],
+  "author": "Chinmay Kubal",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "express": "^4.18.2"
+  }
+}
