@@ -73,26 +73,26 @@
 #   }
 # }
 
-resource "aws_key_pair" "ssh_key" {
-  key_name   = "ssh_generated_key"
-  public_key = file("sshkeys.pub")
+# resource "aws_key_pair" "ssh_key" {
+#   key_name   = "ssh_generated_key"
+#   public_key = file("sshkeys.pub")
   
-}
+# }
 
-resource "aws_instance" "webserver" {
-  ami               = "ami-0c7217cdde317cfec"
-  instance_type     = "t2.xlarge"               
-  key_name          = aws_key_pair.ssh_key.key_name               
-  availability_zone = "us-east-1a"
-  # vpc_security_group_ids = [aws_security_group.instance_sg.id]
-  tags = {
-    Name = "Web-Server"
-  }
-  user_data = file("script.sh")
-}
-output "public_ip" {
-  value = aws_instance.webserver.public_ip
-}
+# resource "aws_instance" "webserver" {
+#   ami               = "ami-0c7217cdde317cfec"
+#   instance_type     = "t2.xlarge"               
+#   key_name          = aws_key_pair.ssh_key.key_name               
+#   availability_zone = "us-east-1a"
+#   # vpc_security_group_ids = [aws_security_group.instance_sg.id]
+#   tags = {
+#     Name = "Web-Server"
+#   }
+#   user_data = file("script.sh")
+# }
+# output "public_ip" {
+#   value = aws_instance.webserver.public_ip
+# }
 
 
 # https://www.sammeechward.com/terraform-vpc-subnets-ec2-and-more

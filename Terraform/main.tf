@@ -9,7 +9,7 @@ resource "aws_vpc" "custom_vpc" {
 resource "aws_subnet" "public_subnet" {
   vpc_id            = aws_vpc.custom_vpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "1a"
+  availability_zone = "us-east-1a"
 
   tags = {
     Name = "Public Subnet"
@@ -110,7 +110,12 @@ resource "aws_instance" "web_instance" {
   subnet_id                   = aws_subnet.public_subnet.id
   vpc_security_group_ids      = [aws_security_group.security_group.id]
   associate_public_ip_address = true
-  user_data = file("script.sh")
+  # user_data = file("script.sh")
+
+  user_data = <<-EOF
+  #!/bin/bash 
+  echo "file created" > gg.tx
+  EOF
 
   tags = {
     Name = "Web-Server"
