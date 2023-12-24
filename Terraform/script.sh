@@ -32,7 +32,8 @@ sudo usermod -aG docker $USER && newgrp docker
 minikube start --cpus 2 --memory 8192 --vm-driver=docker
 
 
-
+# just go through the below link once 
+# https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-as-a-reverse-proxy-on-ubuntu-22-04#step-1-installing-nginx
 
 # Replace with your actual domain and app port
 DOMAIN="your_domain.com"
