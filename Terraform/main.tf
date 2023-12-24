@@ -95,3 +95,5 @@ output "public_ip" {
 }
 
 
+# https://www.sammeechward.com/terraform-vpc-subnets-ec2-and-more
+# actual code use the above link for the terraform code.
