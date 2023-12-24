@@ -31,27 +31,50 @@ sudo usermod -aG docker $USER && newgrp docker
 # minikube start --vm-driver=docker
 minikube start --cpus 2 --memory 8192 --vm-driver=docker
 
+
+
+
+# Replace with your actual domain and app port
+DOMAIN="your_domain.com"
+APP_PORT=3000
+
+# Step 1: Install Nginx
 sudo apt-get update
-sudo apt-get install nginx
+sudo apt-get install -y nginx
 
-sudo nano /etc/nginx/sites-available/your_domain.com
-
+# Step 2: Create Nginx Configuration File
+NGINX_CONF="/etc/nginx/sites-available/$DOMAIN"
+sudo tee "$NGINX_CONF" > /dev/null <<EOL
 server {
     listen 80;
-    server_name your_domain.com www.your_domain.com; # Replace with your actual domain
+    server_name $DOMAIN www.$DOMAIN;
 
     location / {
-        proxy_pass http://localhost:3000; # Port where your app is running
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass http://localhost:$APP_PORT;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
     }
 
     # Add SSL/TLS configuration here if you have an SSL certificate
 }
+EOL
 
-sudo ln -s /etc/nginx/sites-available/your_domain.com /etc/nginx/sites-enabled/
+# Step 3: Create a Symbolic Link
+sudo ln -s "$NGINX_CONF" "/etc/nginx/sites-enabled/"
 
+# Step 4: Test Nginx Configuration
 sudo nginx -t
 
+# Step 5: Restart Nginx
 sudo service nginx restart
 
+# Step 6: Adjust Firewall Rules (if needed)
+# Make sure your security group allows incoming traffic on port 80 (HTTP) and, if applicable, port 443 (HTTPS).
+
+# Step 7: Domain DNS Configuration
+# Configure the DNS settings for your custom domain ("your_domain.com") in your domain registrar's control panel.
+
+# Step 8: Testing
+# Now, you can access your custom domain in a web browser, and Nginx will proxy requests to your locally running app on port $APP_PORT.
+
+echo "Nginx configuration for $DOMAIN has been set up."
