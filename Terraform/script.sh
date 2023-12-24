@@ -102,4 +102,5 @@ echo "Nginx configuration for $DOMAIN has been set up."
 #           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 #           docker push my-docker-image:$DOCKER_IMAGE_TAG
 
-# kubectl create deployment <deployment-name> --image=<docker-image-name> --replicas=2
+# kubectl create deployment my-app-deployment --image=my-docker-image:latest --replicas=2
+
