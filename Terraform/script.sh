@@ -30,3 +30,28 @@ sudo usermod -aG docker $USER && newgrp docker
 
 # minikube start --vm-driver=docker
 minikube start --cpus 2 --memory 8192 --vm-driver=docker
+
+sudo apt-get update
+sudo apt-get install nginx
+
+sudo nano /etc/nginx/sites-available/your_domain.com
+
+server {
+    listen 80;
+    server_name your_domain.com www.your_domain.com; # Replace with your actual domain
+
+    location / {
+        proxy_pass http://localhost:3000; # Port where your app is running
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # Add SSL/TLS configuration here if you have an SSL certificate
+}
+
+sudo ln -s /etc/nginx/sites-available/your_domain.com /etc/nginx/sites-enabled/
+
+sudo nginx -t
+
+sudo service nginx restart
+
