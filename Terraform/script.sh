@@ -78,3 +78,26 @@ sudo service nginx restart
 # Now, you can access your custom domain in a web browser, and Nginx will proxy requests to your locally running app on port $APP_PORT.
 
 echo "Nginx configuration for $DOMAIN has been set up."
+
+
+
+
+# name: Build and Push Docker Image
+# on:
+#   push:
+#     branches:
+#       - main
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+      
+#       - name: Build and push Docker image
+#         env:
+#           DOCKER_IMAGE_TAG: latest  # Set a fixed tag here
+#         run: |
+#           docker build -t my-docker-image:$DOCKER_IMAGE_TAG .
+#           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+#           docker push my-docker-image:$DOCKER_IMAGE_TAG
