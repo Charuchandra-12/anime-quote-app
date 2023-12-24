@@ -101,3 +101,5 @@ echo "Nginx configuration for $DOMAIN has been set up."
 #           docker build -t my-docker-image:$DOCKER_IMAGE_TAG .
 #           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 #           docker push my-docker-image:$DOCKER_IMAGE_TAG
+
+# kubectl create deployment <deployment-name> --image=<docker-image-name> --replicas=2
