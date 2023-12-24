@@ -17,3 +17,16 @@ sudo apt-get update -y
 
 # Install the Docker packages:
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+
+# Install minikube cluster (stable release on x86-64 Linux using Debian package)
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
+
+# Install kubectl
+sudo snap install kubectl --classic
+
+# Start the minukube
+sudo usermod -aG docker $USER && newgrp docker
+
+# minikube start --vm-driver=docker
+minikube start --cpus 2 --memory 8192 --vm-driver=docker
