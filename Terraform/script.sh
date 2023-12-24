@@ -105,3 +105,4 @@ echo "Nginx configuration for $DOMAIN has been set up."
 
 # kubectl create deployment my-app-deployment --image=my-docker-image:latest --replicas=2
 
+# cross check the quotes, most of them are said by someone else, so fix that too.
