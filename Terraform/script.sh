@@ -36,12 +36,13 @@ minikube start --cpus 2 --memory 8192 --vm-driver=docker
 # https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-as-a-reverse-proxy-on-ubuntu-22-04#step-1-installing-nginx
 
 # Replace with your actual domain and app port
-DOMAIN="your_domain.com"
+DOMAIN="animequotes.chinmaykubalprojects.tech"
 APP_PORT=3000
 
 # Step 1: Install Nginx
 sudo apt-get update
 sudo apt-get install -y nginx
+sudo ufw allow 'Nginx HTTP'
 
 # Step 2: Create Nginx Configuration File
 NGINX_CONF="/etc/nginx/sites-available/$DOMAIN"
@@ -69,6 +70,10 @@ sudo nginx -t
 # Step 5: Restart Nginx
 sudo service nginx restart
 
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw enable
+
 # Step 6: Adjust Firewall Rules (if needed)
 # Make sure your security group allows incoming traffic on port 80 (HTTP) and, if applicable, port 443 (HTTPS).
 
@@ -80,6 +85,8 @@ sudo service nginx restart
 
 echo "Nginx configuration for $DOMAIN has been set up."
 
+# docker pull command 
+# kubectl create deployment my-app-deployment --image=my-docker-image:latest --replicas=2
 
 
 
@@ -103,6 +110,6 @@ echo "Nginx configuration for $DOMAIN has been set up."
 #           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 #           docker push my-docker-image:$DOCKER_IMAGE_TAG
 
-# kubectl create deployment my-app-deployment --image=my-docker-image:latest --replicas=2
+
 
 # cross check the quotes, most of them are said by someone else, so fix that too.
