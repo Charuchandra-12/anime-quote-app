@@ -1,3 +1,8 @@
 node_modules/
 Terraform/.terraform/
 Terraform/.terraform.lock.hcl
+Terraform/.terraform.tfstate.lock.info
+Terraform/terraform.tfstate
+Terraform/terraform.tfstate.backup
+Terraform/sshkeys.pub
+Terraform/sshkeys

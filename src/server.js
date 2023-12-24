@@ -54,7 +54,7 @@ const quotes = [
   { anime: 'Naruto Shippuden', character: 'Temari', quote: 'We are siblings bound by fate.' },
   { anime: 'One Piece', character: 'Whitebeard', quote: 'One piece... does exist!' },
   { anime: 'Naruto Shippuden', character: 'Ino Yamanaka', quote: 'Flowers are not just beautiful to look at, they have a language all their own.' },
-  { anime: 'One Piece', character: 'Jinbei', quote: 'It is a man’s duty to forgive a woman’s lies.' }
+  { anime: 'One Piece', character: 'Vinsmoke Sanji', quote: 'It is a man’s duty to forgive a woman’s lies.' }
 ];
 
 
