@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# make sure to do chmod +x script.sh before passing this script to user_data
 # INSTALL Docker
 # Add Docker's official GPG key:
 sudo apt-get update -y
@@ -72,7 +73,7 @@ sudo service nginx restart
 
 sudo ufw allow http
 sudo ufw allow https
-sudo ufw enable
+sudo ufw enable -y
 
 # Step 6: Adjust Firewall Rules (if needed)
 # Make sure your security group allows incoming traffic on port 80 (HTTP) and, if applicable, port 443 (HTTPS).

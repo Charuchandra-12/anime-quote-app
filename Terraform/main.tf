@@ -16,13 +16,13 @@ resource "aws_subnet" "public_subnet" {
   }
 }
 
-# resource "aws_subnet" "some_private_subnet" {
+# resource "aws_subnet" "private_subnet" {
 #   vpc_id            = aws_vpc.custom_vpc.id
 #   cidr_block        = "10.0.2.0/24"
-#   availability_zone = "1a"
+#   availability_zone = "us-east-1a"
 
 #   tags = {
-#     Name = "Some Private Subnet"
+#     Name = "Private Subnet"
 #   }
 # }
 
@@ -52,10 +52,10 @@ resource "aws_route_table" "public_rt" {
   }
 }
 
-# resource "aws_route_table_association" "public_1_rt_a" {
-#   subnet_id      = aws_subnet.public_subnet.id
-#   route_table_id = aws_route_table.public_rt.id
-# }
+resource "aws_route_table_association" "public_route_subnet_asso" {
+  subnet_id      = aws_subnet.public_subnet.id
+  route_table_id = aws_route_table.public_rt.id
+}
 
 resource "aws_security_group" "security_group" {
   name   = "webserver_sg"
@@ -97,8 +97,8 @@ resource "aws_security_group" "security_group" {
 }
 
 resource "aws_key_pair" "ssh_key" {
-  key_name   = "ssh_generated_key"
-  public_key = file("sshkeys.pub")
+  key_name   = "ssh_keys"
+  public_key = file("sshkey.pub")
   
 }
 
@@ -106,17 +106,11 @@ resource "aws_instance" "web_instance" {
   ami               = "ami-0c7217cdde317cfec"
   instance_type     = "t2.xlarge"               
   key_name          = aws_key_pair.ssh_key.key_name
-
   subnet_id                   = aws_subnet.public_subnet.id
   vpc_security_group_ids      = [aws_security_group.security_group.id]
   associate_public_ip_address = true
-  # user_data = file("script.sh")
-
-  user_data = <<-EOF
-  #!/bin/bash 
-  echo "file created" > gg.tx
-  EOF
-
+# make sure to do chmod +x script.sh before passing this script to user_data
+  user_data = file("script.sh")
   tags = {
     Name = "Web-Server"
   }
