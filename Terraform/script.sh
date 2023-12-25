@@ -31,6 +31,7 @@ sudo snap install kubectl --classic
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 sudo dpkg -i minikube_latest_amd64.deb
 
+# this is not gonna work either run the app as docker container or try to use EKS or ECS or something
 # Start the minukube
 minikube start --cpus 2 --memory 8192 --vm-driver=docker
 
