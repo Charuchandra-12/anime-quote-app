@@ -1,4 +1,5 @@
 node_modules/
+Terraform/
 Terraform/.terraform/
 Terraform/.terraform.lock.hcl
 Terraform/.terraform.tfstate.lock.info
@@ -6,3 +7,4 @@ Terraform/terraform.tfstate
 Terraform/terraform.tfstate.backup
 Terraform/sshkey.pub
 Terraform/sshkey
+todolist.txt
