@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: anime-quote-app-container
-          image: gcr.io/$PROJECT_ID/anime_quote_app_repo/anime_quote_app_image:latest
+          image: gcr.io/anime_quote_app_repo/anime_quote_app_image:latest
           resources:
             limits:
               memory: "128Mi"
