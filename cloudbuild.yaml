@@ -1,4 +1,5 @@
 steps:
+  # build the container image
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
@@ -7,4 +8,16 @@ steps:
         "gcr.io/$PROJECT_ID/anime_quote_app_repo/anime_quote_app_image",
         ".",
       ]
-images: ["gcr.io/$PROJECT_ID/anime_quote_app_repo/anime_quote_app_image"]
+    # push container image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      ["push", "gcr.io/$PROJECT_ID/anime_quote_app_repo/anime_quote_app_image"]
+    # deploy container image to GKE
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+      - run
+      - --filename=deployment.yaml
+      - --image=gcr.io/$PROJECT_ID/anime_quote_app_repo/anime_quote_app_image
+      - --cluster=gke-gcp-devops
+      - --namespace=gke-gcp-devops-prod
+      - --location=us-central1-c
