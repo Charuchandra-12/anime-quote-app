@@ -2,3 +2,6 @@ Dockerfile
 .gitignore
 node_modules/
 Terraform/
+todolist.txt
+README.md
+cloudbuild.yaml
