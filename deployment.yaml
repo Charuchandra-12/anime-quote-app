@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: anime-quote-app-container
-          image: gcr.io/anime_quote_app_repo/anime_quote_app_image
+          image: gcr.io/crucial-bucksaw-407710/anime_quote_app_repo/anime_quote_app_image:latest
           # resources:
           #   limits:
           #     memory: "128Mi"
